@@ -133,19 +133,14 @@ INCLUDES =	-I./includes
 all: $(NAME)
 
 $(NAME):
-	@echo "Compilation des binaires ..."
 	@gcc -c $(SRCS) $(CFLAGS) $(INCLUDES)
-	@echo "Compilation de la librairie ..."
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "Done !"
 
 clean:
 	@rm $(OBJ)
-	@echo "Binaires detruits."
 
 fclean: clean
 	@rm $(NAME)
-	@echo "Librairie detruite."
 
 re: fclean all
