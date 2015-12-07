@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:08 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/04 15:13:50 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 11:26:36 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,29 @@
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <grp.h>
+# include <stdio.h>
+/*
+** s_directory usage :
+** name => Contains the name of the current directory;
+** subdir => Contains the name of all subdirectories;
+** file => Contains the name of all files and subdirectories;
+** next => Chained list pointer.
+*/
+
+typedef struct			s_directory
+{
+	char					*name;
+	char					**subdir;
+	char					**file;
+	struct	s_directory		*next;
+}						t_directory;
+
+/*
+** dir_list.c
+*/
+
+t_directory		*add_dir(t_directory *list, char *dirname);
+char			**find_subdirs(char *dirname);
+char			**find_files(const char *dirname);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:19 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/04 15:17:19 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 12:34:09 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,22 @@
 
 int		main(int ac, char **av)
 {
-	DIR		*file_des;
-	struct dirent	*current;
-	struct stat		sb;
-	struct group	*pwd;
+	char	**file_list;
+//	int		i;
+//	int		a;
 
-	file_des = opendir("./sources");
-	if (ac == 2)
-		av[1] = NULL;
-	current = readdir(file_des);
-	ft_putendl(current->d_name);
-	stat(ft_strjoin("./sources/", current->d_name), &sb);
-/*	ft_putstr("UID = ");
-	ft_putnbr((int)sb.st_uid);
-	ft_putendl("");
-	ft_putstr("GID = ");
-	ft_putnbr((int)sb.st_gid);
-	ft_putendl("");
-	ft_putstr("NLINK = ");
-	ft_putnbr((int)sb.st_nlink);
-	ft_putendl("");
-	ft_putstr("SIZE = ");
-	ft_putnbr((int)sb.st_size); */
-	pwd = getgrgid(sb.st_gid);
-	ft_putendl(pwd->gr_name);
-	closedir(file_des);
+//	a = 0;
+	if (ac > 1)
+	{
+//		i = 0;
+		file_list = find_files(av[1]);
+/*		while (file_list[i])
+		{
+			while (a == 0 && (file_list[i][0] == '.'))
+				i++;
+			ft_putendl(file_list[i]);
+			i++;
+			} */
+	}
 	return (0);
 }

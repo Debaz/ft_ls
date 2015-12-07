@@ -6,15 +6,15 @@
 #    By: klescaud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/03 10:51:54 by klescaud          #+#    #+#              #
-#    Updated: 2015/12/03 11:02:19 by klescaud         ###   ########.fr        #
+#    Updated: 2015/12/07 10:51:22 by klescaud         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =		ft_ls
 
-SRCS = 		./sources/main.c
+SRCS = 		./sources/main.c	./sources/dir_list.c
 
-OBJ =		./main.o
+OBJ =		./main.o			./dir_list.o
 
 CFLAGS = 	-Wall -Wextra -Werror
 
