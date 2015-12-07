@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:19 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/07 14:35:28 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 15:19:59 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		main(int ac, char **av)
 	if (ac > 1)
 	{
 		i = 0;
-		file_list = find_subdirs(av[1], ft_strjoin(av[1], "/"));
-//		file_list = alsort_tab(file_list);
+		file_list = find_files(av[1]);
+		file_list = alsort_tab(file_list);
 		while (file_list[i])
 		{
 			ft_putendl(file_list[i]);

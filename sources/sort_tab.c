@@ -6,24 +6,31 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 14:19:54 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/07 14:35:02 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 15:23:37 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 
+/*
+** alsort_tab => Sort a char** by alphanumerical sorting
+*/
+
 char	**alsort_tab(char **tab)
 {
 	int		i;
 	int		sorted;
+	char	*temp;
 
 	i = 0;
 	while (tab[i])
 	{
 		sorted = 1;
-		if ((tab[i + 1]) && ft_strcmp(tab[i], tab[i + 1]))
+		if ((tab[i + 1]) && (ft_strcmp(tab[i], tab[i + 1])) > 0)
 		{
-			swap_tab_lines(&tab[i], &tab[i + 1]);
+			temp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = temp;
 			sorted = 0;
 		}
 		i++;
@@ -31,15 +38,4 @@ char	**alsort_tab(char **tab)
 			i = 0;
 	}
 	return (tab);
-}
-
-void	swap_tab_lines(char **s1, char **s2)
-{
-	char	**tmp;
-
-	tmp = NULL;
-	*tmp = *s1;
-	s1 = s2;
-	*s2 = *tmp;
-	free(tmp);
 }
