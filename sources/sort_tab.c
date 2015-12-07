@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 10:52:19 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/07 14:35:28 by klescaud         ###   ########.fr       */
+/*   Created: 2015/12/07 14:19:54 by klescaud          #+#    #+#             */
+/*   Updated: 2015/12/07 14:35:02 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 
-int		main(int ac, char **av)
+char	**alsort_tab(char **tab)
 {
-	char	**file_list;
 	int		i;
+	int		sorted;
 
-	if (ac > 1)
+	i = 0;
+	while (tab[i])
 	{
-		i = 0;
-		file_list = find_subdirs(av[1], ft_strjoin(av[1], "/"));
-//		file_list = alsort_tab(file_list);
-		while (file_list[i])
+		sorted = 1;
+		if ((tab[i + 1]) && ft_strcmp(tab[i], tab[i + 1]))
 		{
-			ft_putendl(file_list[i]);
-			i++;
+			swap_tab_lines(&tab[i], &tab[i + 1]);
+			sorted = 0;
 		}
+		i++;
+		if (!sorted)
+			i = 0;
 	}
-	return (0);
+	return (tab);
+}
+
+void	swap_tab_lines(char **s1, char **s2)
+{
+	char	**tmp;
+
+	tmp = NULL;
+	*tmp = *s1;
+	s1 = s2;
+	*s2 = *tmp;
+	free(tmp);
 }

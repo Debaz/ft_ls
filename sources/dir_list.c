@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:14:18 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/07 12:34:31 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 14:19:41 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_directory	*add_dir(t_directory *list, char *dirname)
 	if ((new = malloc(sizeof(t_directory))) == NULL)
 		return (NULL);
 	new->name = dirname;
-	new->subdir = find_subdirs(dirname);
+	new->subdir = find_subdirs(dirname, ft_strjoin(dirname, "/"));
 	new->file = find_files(dirname);
 	new->next = NULL;
 	if (list == NULL)
@@ -43,7 +43,7 @@ t_directory	*add_dir(t_directory *list, char *dirname)
 ** find_subdirs => lists all the subdirs of a directory.
 */
 
-char	**find_subdirs(char *dirname)
+char	**find_subdirs(char *dirname, char *path)
 {
 	DIR				*fd;
 	struct dirent	*file;
@@ -57,12 +57,12 @@ char	**find_subdirs(char *dirname)
 		return (NULL);
 	while ((file = readdir(fd)) != NULL)
 	{
-		stat(ft_strjoin("./", file->d_name), file_stat);
+		stat(ft_strjoin(path, file->d_name), file_stat);
 		if (S_ISDIR(file_stat->st_mode))
 		{
 			file_list = ft_strjoin(file_list, " ");
 			file_list = ft_strjoin(file_list, file->d_name);
-			printf("%s\n", file->d_name);
+//			printf("%s\n", file->d_name);
 		}
 	}
 	closedir(fd);
@@ -87,7 +87,7 @@ char	**find_files(const char *dirname)
 	{
 		file_list = ft_strjoin(file_list, " ");
 		file_list = ft_strjoin(file_list, file->d_name);
-		printf("%s\n", file->d_name);
+//		printf("%s\n", file->d_name);
 	}
 	closedir(fd);
 	return (ft_strsplit(file_list, ' '));

@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:08 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/07 11:26:36 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 14:32:58 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,14 @@ typedef struct			s_directory
 */
 
 t_directory		*add_dir(t_directory *list, char *dirname);
-char			**find_subdirs(char *dirname);
+char			**find_subdirs(char *dirname, char *path);
 char			**find_files(const char *dirname);
+
+/*
+** sort_tab.c
+*/
+
+char			**alsort_tab(char **tab);
+void			swap_tab_lines(char **s1, char **s2);
 
 #endif
