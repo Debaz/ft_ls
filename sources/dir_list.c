@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:14:18 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/07 14:19:41 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/08 12:20:40 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ char	**find_subdirs(char *dirname, char *path)
 		{
 			file_list = ft_strjoin(file_list, " ");
 			file_list = ft_strjoin(file_list, file->d_name);
-//			printf("%s\n", file->d_name);
 		}
 	}
 	closedir(fd);
@@ -87,7 +86,6 @@ char	**find_files(const char *dirname)
 	{
 		file_list = ft_strjoin(file_list, " ");
 		file_list = ft_strjoin(file_list, file->d_name);
-//		printf("%s\n", file->d_name);
 	}
 	closedir(fd);
 	return (ft_strsplit(file_list, ' '));
