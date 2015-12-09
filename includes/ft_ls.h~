@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:08 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/09 14:57:10 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/07 15:28:59 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <uuid/uuid.h>
 # include <grp.h>
 # include <stdio.h>
-# include <time.h>
 
 /*
 ** s_directory usage :
@@ -43,25 +42,14 @@ typedef	struct			s_directory
 ** dir_list.c
 */
 
-t_directory				*build_list(t_directory *list, char *dirname);
 t_directory				*add_dir(t_directory *list, char *dirname);
 char					**find_subdirs(char *dirname, char *path);
 char					**find_files(const char *dirname);
-int						is_hidden(char *file);
 
 /*
 ** sort_tab.c
 */
 
 char					**alsort_tab(char **tab);
-
-/*
-** display.c
-*/
-
-void					print_long(char *path);
-int						file_type(int mode);
-char					*perm_display(struct stat filestat);
-char					*format_date(char *date);
 
 #endif

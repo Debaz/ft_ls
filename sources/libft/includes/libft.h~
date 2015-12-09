@@ -6,7 +6,7 @@
 /*   By: klescaud <klescaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 02:37:43 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/09 14:30:22 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/10/28 16:29:04 by Debaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n);
 char	*ft_strrchr(const char *str, int c);
 void	ft_strclr(char *s);
 int		get_next_line(int fd, char **line);
-size_t	ft_nblen(int n);
 
 #endif

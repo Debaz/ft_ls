@@ -6,11 +6,36 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 10:14:18 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/08 12:20:40 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/09 16:44:48 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
+
+/*
+** build_list => Create a new list recursively, starting from directory.
+** BUG SUR LES BOUCLES
+*/
+
+t_directory	*build_list(t_directory *list, char *dirname)
+{
+	int			i;
+
+//	ft_putendl(dirname);
+	i = 0;
+	list = add_dir(list, dirname);
+//	printf("******%s******\n", list->subdir[0]);
+	if (list->subdir[0] != NULL)
+	{
+		while (list->subdir[i])
+		{
+			list = build_list(list, list->subdir[i]);
+			i++;
+		}
+		list = list->next;
+	}
+	return (list);
+}
 
 /*
 ** add_dir => Adds a new element to the list.
@@ -89,4 +114,15 @@ char	**find_files(const char *dirname)
 	}
 	closedir(fd);
 	return (ft_strsplit(file_list, ' '));
+}
+
+/*
+** is_hidden => return 1 if the file is hidden, 0 if not.
+*/
+
+int		is_hidden(char *file)
+{
+	if (file[0] == '.')
+		return (1);
+	return (0);
 }

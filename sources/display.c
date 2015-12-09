@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 12:21:17 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/08 14:19:17 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/09 14:12:28 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,24 @@
 void		print_long(char *path)
 {
 	struct stat		filestat;
-	struct passwd	userpswd;
-	struct group	grppswd;
+	struct passwd	*userpswd;
+	struct group	*grppswd;
 
 	stat(path, &filestat);
 	ft_putstr(perm_display(filestat));
+	ft_putstr(" ");
 	ft_putnbr(filestat.st_nlink);
+	ft_putchar(' ');
 	userpswd = getpwuid(filestat.st_uid);
-	ft_putstr(userpswd.pw_name);
+	ft_putstr(userpswd->pw_name);
+	ft_putstr("  ");
 	grppswd = getgrgid(filestat.st_gid);
-	ft_putstr(grppswd.gr_name);
+	ft_putstr(grppswd->gr_name);
+	ft_putstr("  ");
 	ft_putnbr(filestat.st_size);
-	ft_putstr(ctime(filestat.st_mtime));
+	ft_putchar(' ');
+	ft_putstr(format_date(ctime(&filestat.st_mtime)));
+	ft_putchar(' ');
 	ft_putendl(path);
 }
 
@@ -52,7 +58,7 @@ int			file_type(int mode)
 		type = 'c';
 	else if (S_ISFIFO(mode))
 		type = 'p';
-	else if (S_ISLINK(mode))
+	else if (S_ISLNK(mode))
 		type = 'l';
 	else if (S_ISSOCK(mode))
 		type = 's';
@@ -86,4 +92,24 @@ char		*perm_display(struct stat filestat)
 	bits[11] = '\0';
 //	FREETAB (rwx);
 	return (bits);
+}
+
+/*
+** format_date => format the date to be used in long display
+*/
+
+char		*format_date(char *date)
+{
+	char	*new_date;
+	int		i;
+
+	i = 0;
+	new_date = (char *)malloc(sizeof(char) * 13);
+	while (i < 12)
+	{
+		new_date[i] = date[i + 4];
+		i++;
+	}
+	new_date[i] = '\0';
+	return (new_date);
 }
