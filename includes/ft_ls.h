@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:08 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/09 14:57:10 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/09 20:49:41 by Debaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int						is_hidden(char *file);
 */
 
 char					**alsort_tab(char **tab);
+char					**rev_alsort_tab(char **tab);
+char					**timesort_tab(char **tab, char *path);
+char					**rev_timesort_tab(char **tab, char *path);
+int						file_datecmp(char *file1, char *file2, char *path);
 
 /*
 ** display.c

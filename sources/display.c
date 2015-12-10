@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 12:21:17 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/09 14:12:28 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/09 21:22:26 by Debaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		print_long(char *path)
 	ft_putchar(' ');
 	ft_putstr(format_date(ctime(&filestat.st_mtime)));
 	ft_putchar(' ');
-	ft_putendl(path);
+//  v - Ligne a modifier plus tard, fonctionne dans le cas ou le path contient './'
+	ft_putendl(&path[2]);
 }
 
 /*
