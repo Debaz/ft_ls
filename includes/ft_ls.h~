@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 10:52:08 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/10 10:44:03 by klescaud         ###   ########.fr       */
+/*   Updated: 2015/12/09 20:49:41 by Debaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ void					print_long(char *path);
 int						file_type(int mode);
 char					*perm_display(struct stat filestat);
 char					*format_date(char *date);
-void					print_size(int size);
 
 #endif

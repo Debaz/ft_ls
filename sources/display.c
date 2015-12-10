@@ -6,7 +6,7 @@
 /*   By: klescaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 12:21:17 by klescaud          #+#    #+#             */
-/*   Updated: 2015/12/09 21:22:26 by Debaz            ###   ########.fr       */
+/*   Updated: 2015/12/10 12:32:16 by klescaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		print_long(char *path)
 	grppswd = getgrgid(filestat.st_gid);
 	ft_putstr(grppswd->gr_name);
 	ft_putstr("  ");
-	ft_putnbr(filestat.st_size);
+	print_size(filestat.st_size);
 	ft_putchar(' ');
 	ft_putstr(format_date(ctime(&filestat.st_mtime)));
 	ft_putchar(' ');
@@ -113,4 +113,23 @@ char		*format_date(char *date)
 	}
 	new_date[i] = '\0';
 	return (new_date);
+}
+
+/*
+** print_size => format and prints the size to be used in long display
+*/
+
+void		print_size(int size)
+{
+	int		i;
+
+
+//  v - Temporaire, a adapter a la taille de la size.
+	i = 10 - ft_nblen(size);
+	while (i > 0)
+	{
+		ft_putchar(' ');
+		i--;
+	}
+	ft_putnbr(size);
 }

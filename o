@@ -1,0 +1,13 @@
+total 96
+-rw-r--r--  0 klescaud  2013_paris      0 Dec 10 10:49 o
+-rw-r--r--  1 klescaud  2013_paris    702 Dec 10 10:49 t
+-rw-r--r--  1 klescaud  2013_paris   2524 Dec 10 10:47 dir_list.o
+-rw-r--r--  1 klescaud  2013_paris   3008 Dec 10 10:47 display.o
+-rwxr-xr-x  1 klescaud  2013_paris  18504 Dec 10 10:47 ft_ls
+-rw-r--r--  1 klescaud  2013_paris   1136 Dec 10 10:47 main.o
+-rw-r--r--  1 klescaud  2013_paris   2464 Dec 10 10:47 sort_tab.o
+drwxr-xr-x  8 klescaud  2013_paris    272 Dec 10 10:47 sources
+drwxr-xr-x  4 klescaud  2013_paris    136 Dec 10 10:44 includes
+-rw-r--r--  1 klescaud  2013_paris   1607 Dec 10 10:32 Makefile
+-rw-r--r--  1 klescaud  2013_paris      9 Dec 10 10:32 auteur
+drwxr-xr-x  3 klescaud  2013_paris    102 Dec 10 10:32 sujet
